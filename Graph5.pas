@@ -102,12 +102,27 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 				y:=y+0.0001;
 			end;
 	end;
+{----RandomDots----}
+procedure pRandomDots;	{t1, t3, t5 - x}
+	begin				{t2, t4, t6 - y}
+		randomize;
+		repeat
+			t1:=random(80);
+			t3:=random(80);
+			t5:=random(80);
+			t2:=random(25);
+			t4:=random(25);
+			t6:=random(25);
+		until ((t5 - t1) / (t3 - t1)) <> ((t6 - t2) / (t4 - t2));
+	end;
 {----Main----}
 begin
 	clrscr; {Чистим окно}
 	
 	pField; {Заполняем таблицу}
 	pFieldBool; {Заполняем таблицу использования}
+
+	pRandomDots; {Выбираем случайные точки}
 	
 	pLine(t1,t2,t3,t4); {Первая сторона}
 	pFieldBool; {Обнуляем таблицу использования}
@@ -120,6 +135,7 @@ begin
 
 	pTWr; {Выводим таблицу на монитор}
 
-	readln;
+	write('(', t1, ' ', t2, ')', ' ', '(', t3, ' ', t4, ')', ' ', '(', t5, ' ', t6, ')'); {Для отладки}
+
 	readln;
 end.
