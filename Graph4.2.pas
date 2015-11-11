@@ -71,6 +71,7 @@ procedure pFieldBool;
 	end;
 {----Line----}
 procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
+	var v:integer;
 	begin
 		if (y1=y2) and (x1=x2) then
 			begin
@@ -79,18 +80,36 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 			end;
 
 		if (y1=y2) and (x1<>x2) then
-			begin
-				for i:=1 to x2-x1+1 do
-					Table[y1,i]:=1;
-				exit;	
-			end;
+            begin
 
-		if (y1<>y2) and (x1=x2) then
-			begin
-				for i:=1 to y2-y1+1 do
-					Table[i,x1]:=1;
-				exit;	
-			end;		
+                if x1 > x2 then
+                    begin
+                        v:=x2;
+                        x2:=x1;
+                        x1:=v;
+                    end;
+
+                for i:=x1 to x2 do
+                    Table[y1,i]:=1;
+                exit;   
+
+            end;
+
+        if (y1<>y2) and (x1=x2) then
+            begin
+
+                if y1 > y2 then
+                    begin
+                        v:=y2;
+                        y2:=y1;
+                        y1:=v;
+                    end;
+
+                for i:=y1 to y2 do
+                    Table[i,x1]:=1;
+                exit;   
+                
+            end;        
 
 		if y1 < y2 then 	
 			begin
