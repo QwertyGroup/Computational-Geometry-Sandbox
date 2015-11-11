@@ -56,6 +56,7 @@ procedure pFieldBool;
     end;
 {----Line----} {"Рисование" линии}
 procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
+    var v:integer;
     begin
         if (y1=y2) and (x1=x2) then
             begin
@@ -65,16 +66,34 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 
         if (y1=y2) and (x1<>x2) then
             begin
+
+                if x1 > x2 then
+                    begin
+                        v:=x2;
+                        x2:=x1;
+                        x1:=v;
+                    end;
+
                 for i:=x1 to x2 do
                     Table[y1,i]:=1;
                 exit;   
+
             end;
 
         if (y1<>y2) and (x1=x2) then
             begin
+
+                if y1 > y2 then
+                    begin
+                        v:=y2;
+                        y2:=y1;
+                        y1:=v;
+                    end;
+
                 for i:=y1 to y2 do
                     Table[i,x1]:=1;
                 exit;   
+
             end;        
 
         if y1 < y2 then     
@@ -106,14 +125,14 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 procedure pRandomDots;  {t1, t3, t5 - x}
     begin               {t2, t4, t6 - y}
         randomize;
-        //repeat
+        repeat
             t1:=random(79)+1;
             t3:=random(79)+1;
             t5:=random(79)+1;
             t2:=random(24)+1;
             t4:=random(24)+1;
             t6:=random(24)+1;
-        //until ((t5 - t1) / (t3 - t1)) <> ((t6 - t2) / (t4 - t2));
+        until not ((t1/t3 = t2/t4) and (t3/t5 = t4/t6));
     end;
 {----Main----}
 begin
