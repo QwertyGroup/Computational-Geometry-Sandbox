@@ -65,14 +65,14 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 
         if (y1=y2) and (x1<>x2) then
             begin
-                for i:=1 to x2-x1+1 do
+                for i:=x1 to x2 do
                     Table[y1,i]:=1;
                 exit;   
             end;
 
         if (y1<>y2) and (x1=x2) then
             begin
-                for i:=1 to y2-y1+1 do
+                for i:=y1 to y2 do
                     Table[i,x1]:=1;
                 exit;   
             end;        
