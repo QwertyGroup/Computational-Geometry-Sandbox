@@ -165,6 +165,9 @@ begin
 
 	pTWr;
 	pTWrTest;
+
+    write('(', t1, ' ', t2, ')', ' ', '(', t3, ' ', t4, ')', ' ', '(', t5, ' ', t6, ')'); {Для отладки}
+    
 	readln;
 	readln;
 end.
