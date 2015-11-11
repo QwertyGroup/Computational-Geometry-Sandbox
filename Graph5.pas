@@ -106,14 +106,14 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 procedure pRandomDots;	{t1, t3, t5 - x}
 	begin				{t2, t4, t6 - y}
 		randomize;
-		repeat
+		//repeat
 			t1:=random(79)+1;
 			t3:=random(79)+1;
 			t5:=random(79)+1;
 			t2:=random(24)+1;
 			t4:=random(24)+1;
 			t6:=random(24)+1;
-		until ((t5 - t1) / (t3 - t1)) <> ((t6 - t2) / (t4 - t2));
+		//until ((t5 - t1) / (t3 - t1)) <> ((t6 - t2) / (t4 - t2));
 	end;
 {----Main----}
 begin
