@@ -11,28 +11,28 @@
 {graph 4 ex}
 uses	crt;
 
-const	b = 79;{x} {79}
+const	b = 79;{x} {79} 
 		a = 24;{y} {24}
 
-type	tt = array[1..a,1..b] of byte;		
-		ttb = array[1..a,1..b] of boolean;
+type	tt = array[1..a,1..b] of byte; 	
+		ttb = array[1..a,1..b] of boolean; 
 
-var 	Table:tt;
-		BoolTable:ttb;
+var 	Table:tt; 
+		BoolTable:ttb; 
 		i, j:integer;
 		x, y:real;
 		k, t:real;
 		maxy:integer;
 		F:text;
 {----Field----}
-procedure pField;
+procedure pField; 
 	begin
 		for i:=1 to a do
 			for j:=1 to b do
 				Table[i,j]:=0;
 	end;	
 {----TableWrite----}		
-procedure pTWr;
+procedure pTWr; 
 	begin
 		for i:=1 to a do
 			begin
@@ -41,6 +41,7 @@ procedure pTWr;
 						0:begin TextColor(7); write(char(249)); end;
 						1:begin TextColor(11); write(char(248)); end;
 						2:begin TextColor(11); write(char(248)); end;
+						3:begin TextColor(11); write(char(248)); end;
 					end;
 				writeln;	
 			end;	
@@ -167,7 +168,7 @@ begin
 	pTWrTest;
 
     write('(', t1, ' ', t2, ')', ' ', '(', t3, ' ', t4, ')', ' ', '(', t5, ' ', t6, ')'); {Для отладки}
-    
+
 	readln;
 	readln;
 end.

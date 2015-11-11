@@ -12,14 +12,14 @@
 
 uses crt;
 
-const   b = 79;{x} {79}
+const   b = 79;{x} {79} {Размеры поля}
         a = 24;{y} {24}
 
-type    tt = array[1..a,1..b] of byte;      
-        ttb = array[1..a,1..b] of boolean;
+type    tt = array[1..a,1..b] of byte; {тип двумерного массива}      
+        ttb = array[1..a,1..b] of boolean; {тип массива использования}
 
-var     Table:tt;
-        BoolTable:ttb;
+var     Table:tt; {Таблица - то, что будем выводить}
+        BoolTable:ttb; {Для того, чтоб числа не накладывались}
         i, j:integer;
         x, y:real;
         k, t:real;
@@ -33,7 +33,7 @@ procedure pField;
             for j:=1 to b do
                 Table[i,j]:=0;
     end;
-{----TableWrite----} {Вывод таблицы}
+{----TableWrite----} {Вывод таблицы} {переводим цифры в символы}
 procedure pTWr;
     begin
         for i:=1 to a do
@@ -43,11 +43,12 @@ procedure pTWr;
                         0:begin TextColor(7); write(char(249)); end;
                         1:begin TextColor(11); write(char(248)); end;
                         2:begin TextColor(11); write(char(248)); end;
+                        3:begin TextColor(11); write(char(248)); end;
                     end;
                 writeln;    
             end;    
     end;
-{----FieldBoolean----} {Заполнение таблицы использования ячейки}
+{----FieldBoolean----} {Заполнение таблицы использования ячейки} {Ячейки еще не использовались}
 procedure pFieldBool;
     begin
         for i:=1 to a do
@@ -58,13 +59,13 @@ procedure pFieldBool;
 procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
     var v:integer;
     begin
-        if (y1=y2) and (x1=x2) then
+        if (y1=y2) and (x1=x2) then {Если точка}
             begin
                 Table[y1,x1]:=1;
                 exit;   
             end;
 
-        if (y1=y2) and (x1<>x2) then
+        if (y1=y2) and (x1<>x2) then {Если горизонтальная линия}
             begin
 
                 if x1 > x2 then
@@ -80,7 +81,7 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 
             end;
 
-        if (y1<>y2) and (x1=x2) then
+        if (y1<>y2) and (x1=x2) then {Если вертикальная линия}
             begin
 
                 if y1 > y2 then
@@ -96,7 +97,7 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
 
             end;        
 
-        if y1 < y2 then     
+        if y1 < y2 then {Рисуем линию вверх или вниз}
             begin
                 maxy:=y2;
                 y:=y1;
@@ -107,23 +108,23 @@ procedure pLine(x1,y1,x2,y2:integer); {j=x}{i=y}
                 y:=y2;  
             end;
 
-        k:=(y1-y2)/(x1-x2);
+        k:=(y1-y2)/(x1-x2); {Считаем уравнение прямой}
         t:=y1-k*x1;
 
-        while y <= maxy do
+        while y <= maxy do {Заполняем ячейки +1-ами}
             begin
                 x:=(y-t)/k;
-                if not BoolTable[round(y),round(x)] then
+                if not BoolTable[round(y),round(x)] then {Проверка на "занятость" ячейки}
                     begin
                         inc(Table[round(y),round(x)]);
                         BoolTable[round(y),round(x)]:=true;
                     end;
-                y:=y+0.0001;
+                y:=y+0.0001; {Шаг}
             end;
     end;
 {----RandomDots----}
-procedure pRandomDots;  {t1, t3, t5 - x}
-    begin               {t2, t4, t6 - y}
+procedure pRandomDots;  {t1, t3, t5 - x} {Выбираем 3 рандомные точки}
+    begin               {t2, t4, t6 - y} 
         randomize;
         repeat
             t1:=random(79)+1;
@@ -132,7 +133,7 @@ procedure pRandomDots;  {t1, t3, t5 - x}
             t2:=random(24)+1;
             t4:=random(24)+1;
             t6:=random(24)+1;
-        until not ((t1/t3 = t2/t4) and (t3/t5 = t4/t6));
+        until not ((t1/t3 = t2/t4) and (t3/t5 = t4/t6)); {Эти точки не лежат на 1 прямой}
     end;
 {----Main----}
 begin
