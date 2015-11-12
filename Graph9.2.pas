@@ -19,7 +19,8 @@ type    tt = array[1..n,1..m] of integer;  {тип двумерного масс
 
 var     Table:tt; {Таблица - то, что будем выводить}
         i, j:integer;
-        x, y, a, b, r:integer;
+        a, b, r:integer;
+        x, y:real;
 
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
@@ -36,7 +37,7 @@ procedure pTWr;
                 for j:=1 to m do
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота    }
-                        1:begin TextColor(11); write(char(248)); end; {1 - окружность }  
+                        1..1000:begin TextColor(11); write(char(248)); end; {1 - окружность }  
                     end;
                 writeln;    
             end;    
@@ -53,16 +54,16 @@ procedure pTWrTest;
     end;    
 {----Circle----} {(x-a)^2+(y-b)^2 = r^2}
 procedure pCircle;
+    var i, j:real;
     begin
-        for i:=1 to n do 
-            for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) - sqr(r)) <= 0 then
-                    inc(Table[i,j]);
-
-        for i:=1 to n do 
-            for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) - sqr(r-1)) <= 0 then
-                    dec(Table[i,j]);            
+        while i <= n do
+            while j<= m do 
+                begin
+                    if (sqr(j-a) + sqr(i-b) <= sqr(r)) then
+                        inc(Table[round(i),round(j)]);
+                    i:=i+0.1;
+                    j:=j+0.1;    
+                end;    
     end;
 {----Main----}
 begin
