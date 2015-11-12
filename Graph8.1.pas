@@ -8,7 +8,7 @@
   {$H-,I-,OBJECTCHECKS-,Q-,R-,S-}
 {$ENDIF RELEASE}
 
-{graph 6 - 2 random triangles}
+{graph 8 - 2 random filled triangles}
 
 uses crt;
 
