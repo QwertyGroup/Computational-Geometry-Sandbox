@@ -37,8 +37,6 @@ procedure pTWr;
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота    }
                         1:begin TextColor(11); write(char(248)); end; {1 - окружность }  
-                        2:begin TextColor(11); write(char(248)); end; {2 - окружность }
-                        3:begin TextColor(11); write(char(248)); end; {2 - окружность }                 
                     end;
                 writeln;    
             end;    
@@ -53,66 +51,24 @@ procedure pTWrTest;
                 writeln;    
             end;    
     end;    
-{----Positive f(y)----}    
-function fyPos(y:integer):integer;
-    var f:real;
-    begin
-        f:=sqrt(sqr(r) - sqr(y-b)) + a;
-        fyPos:=round(f);
-    end;
-{----Positive f(x)----}    
-function fxPos(x:integer):integer;
-    var f:real;
-    begin
-        f:=sqrt(sqr(r) - sqr(x-a)) + b;
-        fxPos:=round(f);
-    end;   
-{----Negative f(y)----}    
-function fyNeg(y:integer):integer;
-    var f:real;
-    begin
-        f:= -1*(sqrt(sqr(r) - sqr(y-b))) + a;
-        fyNeg:=round(f);
-    end;
-{----Negative f(x)----}    
-function fxNeg(x:integer):integer;
-    var f:real;
-    begin
-        f:= -1*(sqrt(sqr(r) - sqr(x-a))) + b;
-        fxNeg:=round(f);
-    end;       
 {----Circle----} {(x-a)^2+(y-b)^2 = r^2}
 procedure pCircle;
     begin
+        for i:=1 to n do 
+            for j:=1 to m do 
+                if (sqr(j-a) + sqr(i-b) - sqr(r)) <= 0 then
+                    inc(Table[i,j]);
 
-        for i:=(b-r) to (b+r) do 
-            begin
-                y:=i;
-                x:=fyPos(y);
-                if (y>=1) and (y<=n) and (x>=1) and(x<=m) then
-                    inc(Table[x,y]);
-                x:=fyNeg(y);
-                if (y>=1) and (y<=n) and (x>=1) and(x<=m) then
-                    inc(Table[x,y]);
-            end;
-
-        for i:=(a-r) to (a+r) do 
-            begin
-                x:=i;
-                y:=fxPos(x);
-                if (y>=1) and (y<=n) and (x>=1) and(x<=m) then
-                    inc(Table[x,y]);
-                y:=fxNeg(x);
-                if (y>=1) and (y<=n) and (x>=1) and(x<=m) then
-                    inc(Table[x,y]);
-            end;
-                
+        for i:=1 to n do 
+            for j:=1 to m do 
+                if (sqr(j-a) + sqr(i-b) - sqr(r-1)) <= 0 then
+                    dec(Table[i,j]);            
     end;
-{----Main----}    
+{----Main----}
 begin
     clrscr; {Чистим окно}
     write('Please enter x, y, r: ');
-    read(b, a, r);
+    read(a, b, r);
     clrscr;
 
     pField; {Заполняем таблицу}
