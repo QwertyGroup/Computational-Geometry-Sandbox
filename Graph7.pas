@@ -26,7 +26,7 @@ var     Table:tt; {Таблица - то, что будем выводить}
         maxy:integer;
         t1, t2, t3, t4, t5, t6:integer;
 
-{----Field----} {Заполнение таблицы нулями}
+{----Field----} {Заполнение поля (таблицы) нулями}
 procedure pField;
     begin
         for i:=1 to a do
@@ -135,6 +135,43 @@ procedure pRandomDots;  {t1, t3, t5 - x} {Выбираем 3 рандомные 
             t6:=random(24)+1;
         until not ((t1/t3 = t2/t4) and (t3/t5 = t4/t6)); {Эти точки не лежат на 1 прямой}
     end;
+{----Simplify----}
+procedure pSimlify; {В таблице могут быть числа до 0-3, мы переведем 1, 2 и 3 в 1}
+    begin
+        for i:=1 to a do
+            for j:=1 to b do
+                if (Table[i,j]<>0) then 
+                    Table[i,j]:=1;
+    end;    
+{----Dot in triangle----} {Лежит ли точка в треугольнике}
+function fDot(x, y:integer):boolean;
+    var a, b, c:integer;
+        x1, x2, x3, y1, y2, y3:integer;
+    begin
+        x1:=t1;
+        y1:=t2;
+        x2:=t3;
+        y2:=t4;
+        x3:=t5;
+        y3:=t6;
+
+        a:=(x1 - x) * (y2 - y1) - (x2 - x1) * (y1 - y);
+        b:=(x2 - x) * (y3 - y2) - (x3 - x2) * (y2 - y);
+        c:=(x3 - x) * (y1 - y3) - (x1 - x3) * (y3 - y);
+
+        if ((a>=0) and (b>=0) and (c>=0)) or ((a<=0) and (b<=0) and (c<=0)) then 
+            fDot:=true
+        else
+            fDot:=false;
+    end;
+{----FillTriangle----}    
+procedure pFillTriangle; {Заполняем триугольник}
+    begin
+        for i:=1 to a do
+            for j:=1 to b do 
+                if fDot(j,i) then 
+                    inc(Table[i,j]);            
+    end;
 {----Main----}
 begin
     clrscr; {Чистим окно}
@@ -151,7 +188,11 @@ begin
     pFieldBool; {Обнуляем таблицу использования}
 
     pLine(t3,t4,t5,t6); {Третья сторона}
-    pFieldBool; {Обнуляем таблицу использования (не имеет смысла)}
+    pFieldBool; {Обнуляем таблицу использования}
+
+    pSimlify; {Оставляем только 1 и 0}
+
+    pFillTriangle; {Заполняем триугольник}
 
     pTWr; {Выводим таблицу на монитор}
 
