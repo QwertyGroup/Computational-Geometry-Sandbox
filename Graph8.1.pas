@@ -48,9 +48,9 @@ procedure pTWr;
                         {20..40:begin TextColor(14); write(char(248)); end;}  
                         {41..80:begin TextColor(14); write(char(248)); end;}
                         2:begin TextColor(14); write(char(248)); end;        {2 - стороны 2 треугольника   }
-                        10:begin TextColor(14); write(char(248)); end;       {5 - внутрь 2 треугольника    }
-                        11:begin TextColor(13); write(char(248)); end;       {6 - пересечение треугольников}
-                        12..15:begin TextColor(14); write(char(248)); end;   {2 - стороны 2 треугольника   }
+                        5:begin TextColor(14); write(char(248)); end;       {5 - внутрь 2 треугольника    }
+                        6..10:begin TextColor(13); write(char(248)); end;       {6 - пересечение треугольников}
+                        //11..15:begin TextColor(14); write(char(248)); end;   {2 - стороны 2 треугольника   }
                         //3..4:begin TextColor(14); write(char(248)); end;   
 
                     end;
@@ -223,7 +223,7 @@ procedure pFillTriangle(arg:integer); {Заполняем триугольник
                 else
                     begin
                         if fDot(j,i,2) then 
-                            inc(Table[i,j],6);
+                            inc(Table[i,j],5);
                     end;    
     end;    
 {----ReSimplify----}
@@ -281,8 +281,8 @@ begin
 
     pFillTriangle(2); {Заполняем 2 триугольник}
 
-    //pTWr; {Выводим таблицу на монитор}
-    pTestTWr; {Выводим числовую таблицу на монитор}
+    pTWr; {Выводим таблицу на монитор}
+    //pTestTWr; {Выводим числовую таблицу на монитор}
 
     //write('(', t1, ' ', t2, ')', ' ', '(', t3, ' ', t4, ')', ' ', '(', t5, ' ', t6, ')'); {Для отладки}
 
