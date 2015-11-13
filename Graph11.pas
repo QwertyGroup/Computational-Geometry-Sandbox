@@ -37,9 +37,13 @@ procedure pTWr;
                 for j:=1 to m do
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота                 }
-                        1:begin TextColor(11); write(char(248)); end; {1 - 1 окружность            }
-                        2:begin TextColor(14); write(char(248)); end; {2 - 2 окружность            }                        
+                        1:begin TextColor(7); write(char(249)); end;  {1 - пустота                 }
+                        2:begin TextColor(7); write(char(249)); end;  {2 - пустота                 }                        
                         3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей }
+                        4:begin TextColor(11); write(char(248)); end; {4 - контур 1 окружности     }
+                        5:begin TextColor(14); write(char(248)); end; {5 - контур 2 окружности     }
+                        6:begin TextColor(13); write(char(248)); end; {6 - пересечение окружностей }
+                        9:begin TextColor(13); write(char(248)); end; {9 - пересечение окружностей }
                     end;
                 writeln;    
             end;    
@@ -62,6 +66,14 @@ procedure pCircle(a, b, r:integer);
                 if (sqr(j-a) + sqr(i-b) <= sqr(r)) then
                     inc(Table[i,j]);       
     end;
+{----CircleOutline----}
+procedure pOutline(a, b, r:integer);
+    begin
+        for i:=1 to n do 
+            for j:=1 to m do 
+                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) > sqr(r-1)) then
+                    inc(Table[i,j],3);
+    end; 
 {----Main----}
 begin
     clrscr; {Чистим окно}
@@ -75,6 +87,9 @@ begin
     pCircle(a1, b1, r1); {Рисуем 1 круг} 
     pCircle(a2, b2, r2); {Рисуем 2 круг}
     pCircle(a2, b2, r2); {Другой цвет для 2 круа}
+    pOutline(a1, b1, r1); {Контур 1 круга}
+    pOutline(a2, b2, r2); {Контур 2 круга}
+
     pTWr; {Выводим таблицу на монитор}
     //pTWrTest; {Выводим числовую таблицу на монитор}
 
