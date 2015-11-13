@@ -10,12 +10,19 @@
 
 {graph 12 - floating triangle}
 
-uses crt;
+uses 	crt;
 
-type    tt = array[1..a,1..b] of integer;
+type	tt = array[1..a,1..b] of integer;
 
-var     Table:tt;
-
+var		Table:tt;
+		i, j:integer;
+{----Field----} {Заполнение таблицы нулями}
+procedure pField;
+    begin
+        for i:=1 to a do
+            for j:=1 to b do
+                Table[i,j]:=0;
+    end;
 {----Main----}
 begin
 
