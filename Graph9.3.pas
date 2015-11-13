@@ -19,7 +19,7 @@ type    tt = array[1..n,1..m] of integer;  {тип двумерного масс
 
 var     Table:tt; {Таблица - то, что будем выводить}
         i, j:integer;
-        x, y, a, b, r:integer;
+        a, b, r:integer;
 
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
@@ -56,13 +56,8 @@ procedure pCircle;
     begin
         for i:=1 to n do 
             for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) - sqr(r)) <= 0 then
-                    inc(Table[i,j]);
-
-        for i:=1 to n do 
-            for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) - sqr(r-1)) <= 0 then
-                    dec(Table[i,j]);            
+                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) >= sqr(r-1)) then
+                    inc(Table[i,j]);       
     end;
 {----Main----}
 begin
