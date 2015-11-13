@@ -36,10 +36,13 @@ procedure pTWr;
             begin
                 for j:=1 to m do
                     case Table[i,j] of
-                        0:begin TextColor(7); write(char(249)); end;  {0 - пустота                 }
-                        1:begin TextColor(11); write(char(248)); end; {1 - 1 окружность            }
-                        2:begin TextColor(14); write(char(248)); end; {2 - 2 окружность            }                        
-                        3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей }
+                        0:begin TextColor(7); write(char(249)); end;  {0 - пустота                   }
+                        1:begin TextColor(11); write(char(248)); end; {1 - 1 окружность              }
+                        2:begin TextColor(14); write(char(248)); end; {2 - 2 окружность              }                        
+                        3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей   }
+                        6:begin TextColor(11); write(char(248)); end;
+                        7:begin TextColor(14); write(char(248)); end;
+                        10:begin TextColor(13); write(char(248)); end; {10 - пересечение окружностей }
                     end;
                 writeln;    
             end;    
@@ -59,8 +62,16 @@ procedure pCircle(a, b, r:integer);
     begin
         for i:=1 to n do 
             for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) > sqr(r-1)) then
+                if (sqr(j-a) + sqr(i-b) <= sqr(r)) then
                     inc(Table[i,j]);       
+    end;
+{----FillCircle----} {Зарисовка круга}
+procedure pFillCircle(a, b, r:integer);
+    begin
+        for i:=1 to n do
+            for j:=1 to m do 
+                if (sqr(j-a) + sqr(i-b) < sqr(r)) then 
+                    inc(Table[i,j],5);
     end;
 {----Main----}
 begin
@@ -72,9 +83,11 @@ begin
     clrscr; {Чистим окно}
 
     pField; {Заполняем таблицу}
-    pCircle(a1, b1, r1); {Рисуем 1 круг} 
+    pCircle(a1, b1, r1); {Рисуем 1 круг}
+    pFillCircle(a1, b1, r1); {Зарисуем 1 круг}
     pCircle(a2, b2, r2); {Рисуем 2 круг}
     pCircle(a2, b2, r2); {Другой цвет для 2 круа}
+    pFillCircle(a2, b2, r2); {Зарисуем 2 круг}
     pTWr; {Выводим таблицу на монитор}
     //pTWrTest; {Выводим числовую таблицу на монитор}
 
