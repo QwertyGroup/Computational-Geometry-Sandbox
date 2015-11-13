@@ -19,7 +19,8 @@ type    tt = array[1..n,1..m] of integer;  {тип двумерного масс
 
 var     Table:tt; {Таблица - то, что будем выводить}
         i, j:integer;
-        a, b, r:integer;
+        a1, b1, r1:integer;
+        a2, b2, r2:integer;
 
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
@@ -35,8 +36,10 @@ procedure pTWr;
             begin
                 for j:=1 to m do
                     case Table[i,j] of
-                        0:begin TextColor(7); write(char(249)); end;  {0 - пустота    }
-                        1:begin TextColor(11); write(char(248)); end; {1 - окружность }  
+                        0:begin TextColor(7); write(char(249)); end;  {0 - пустота                 }
+                        1:begin TextColor(11); write(char(248)); end; {1 - 1 окружность            }
+                        2:begin TextColor(14); write(char(248)); end; {2 - 2 окружность            }                        
+                        3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей }
                     end;
                 writeln;    
             end;    
@@ -51,23 +54,27 @@ procedure pTWrTest;
                 writeln;    
             end;    
     end;    
-{----Circle----} {(x-a)^2+(y-b)^2 = r^2}
-procedure pCircle;
+{----Circle----} {(x-a)^2+(y-b)^2 = r^2} {Прорисовка круга}
+procedure pCircle(a, b, r:integer);
     begin
         for i:=1 to n do 
             for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) >= sqr(r-1)) then
+                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) > sqr(r-1)) then
                     inc(Table[i,j]);       
     end;
 {----Main----}
 begin
     clrscr; {Чистим окно}
-    write('Please enter x, y, r: ');
-    read(a, b, r);
-    clrscr;
+    write('Please enter x1, y1, r1: '); {Данные для 1 круга}
+    readln(a1, b1, r1);
+    write('Please enter x2, y2, r2: '); {Данные для 2 круга}
+    read(a2, b2, r2);
+    clrscr; {Чистим окно}
 
     pField; {Заполняем таблицу}
-    pCircle; {Рисуем круг} 
+    pCircle(a1, b1, r1); {Рисуем 1 круг} 
+    pCircle(a2, b2, r2); {Рисуем 2 круг}
+    pCircle(a2, b2, r2); {Другой цвет для 2 круа}
     pTWr; {Выводим таблицу на монитор}
     //pTWrTest; {Выводим числовую таблицу на монитор}
 

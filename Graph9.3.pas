@@ -56,7 +56,7 @@ procedure pCircle;
     begin
         for i:=1 to n do 
             for j:=1 to m do 
-                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) >= sqr(r-1)) then
+                if (sqr(j-a) + sqr(i-b) <= sqr(r)) and (sqr(j-a) + sqr(i-b) > sqr(r-1)) then
                     inc(Table[i,j]);       
     end;
 {----Main----}
