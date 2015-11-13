@@ -8,7 +8,7 @@
   {$H-,I-,OBJECTCHECKS-,Q-,R-,S-}
 {$ENDIF RELEASE}
 
-{graph 11 - 2 circles and intersection}
+{graph 11 - 2 circles with intersection}
 
 uses crt;
 
