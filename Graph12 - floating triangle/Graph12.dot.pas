@@ -70,12 +70,12 @@ procedure pPosCalc(var dot:Tdot);
             dot.x:= dot.x + dot.velotsityX;
         if (dot.y > n) or (dot.y < 1) then
             dot.y:= dot.y + dot.velotsityY;
-
     end;
 {----DotMotion----}
-procedure pDotMotion;
+procedure pDotMotion(var dot:Tdot);
     begin
-        
+        inc(Table[dot.y, dot.x]);
+        pPosCalc(dot); 
     end;
 {----Main----}
 var l:integer;
@@ -88,10 +88,9 @@ begin
     for l:=1 to 20 do
         begin
             pField;
-            inc(Table[dot1.y, dot1.x]);
+            pDotMotion(dot1);
             clrscr;
             pTWr;
-            pPosCalc(dot1);
             delay(300);
         end;
     {BeginOfdeBugBlock}
