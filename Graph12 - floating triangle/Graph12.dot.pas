@@ -72,26 +72,28 @@ procedure pPosCalc(var dot:Tdot);
             dot.y:= dot.y + dot.velotsityY;
 
     end;
-{----Test----}
-procedure pTest;
+{----DotMotion----}
+procedure pDotMotion;
     begin
-        //pField;
-        inc(Table[dot1.y, dot1.x]);
-        clrscr;
-        pTWr;
-        pPosCalc(dot1);
-        delay(50);
-        end;
+        
+    end;
 {----Main----}
 var l:integer;
 begin
     pDotAssignment(dot1);
     {BeginOfdeBugBlock}
-    pField;
+    //pField;
     {EndOfdeBugBlock  }
 
-    for l:=1 to 50 do
-        pTest;
+    for l:=1 to 20 do
+        begin
+            pField;
+            inc(Table[dot1.y, dot1.x]);
+            clrscr;
+            pTWr;
+            pPosCalc(dot1);
+            delay(300);
+        end;
     {BeginOfdeBugBlock}
     //writeln(dot1.x);
     //writeln(dot1.y);
@@ -101,25 +103,3 @@ begin
 
     readln;
 end.
-
-if (dot.x > m) then
-            begin
-                dot.x:= m;
-                dot.y:= -round(dot.velotsityY / 2);
-            end;
-        if (dot.x < 1) then
-            begin
-                dot.x:= 1;
-                dot.y:= -round(dot.velotsityY / 2);
-            end;
-
-        if (dot.y > n) then
-            begin
-                dot.y:= n;
-                dot.x:= -round(dot.velotsityX / 2);
-            end;
-        if (dot.y < 1) then
-            begin
-                dot.y:= 1;
-                dot.x:= -round(dot.velotsityX / 2);
-            end;
