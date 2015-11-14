@@ -26,6 +26,7 @@ type    Tt = array[1..n,1..m] of integer;
 var     Table:Tt;
         i, j:integer;
         dot1:Tdot;
+        dot2:Tdot;
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
     begin
@@ -81,6 +82,7 @@ procedure pDotMotion(var dot:Tdot);
 var l:integer;
 begin
     pDotAssignment(dot1);
+    pDotAssignment(dot2);
     {BeginOfdeBugBlock}
     //pField;
     {EndOfdeBugBlock  }
@@ -89,6 +91,7 @@ begin
         begin
             pField;
             pDotMotion(dot1);
+            pDotMotion(dot2);
             clrscr;
             pTWr;
             delay(300);
