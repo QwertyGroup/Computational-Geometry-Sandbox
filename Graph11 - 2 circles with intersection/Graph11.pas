@@ -38,15 +38,15 @@ procedure pTWr;
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота                 }
                         1:begin TextColor(7); write(char(249)); end;  {1 - пустота                 }
-                        2:begin TextColor(7); write(char(249)); end;  {2 - пустота                 }
+                        2:begin TextColor(7); write(char(249)); end;  {2 - пустота                 }    
                         3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей }
                         4:begin TextColor(11); write(char(248)); end; {4 - контур 1 окружности     }
                         5:begin TextColor(14); write(char(248)); end; {5 - контур 2 окружности     }
                         6:begin TextColor(13); write(char(248)); end; {6 - пересечение окружностей }
                         9:begin TextColor(13); write(char(248)); end; {9 - пересечение окружностей }
                     end;
-                writeln;    
-            end;    
+                writeln;
+            end;
     end;
 {----TableWriteTest----} {Вывод таблицы} {без перевода цифр в символы}
 procedure pTWrTest;

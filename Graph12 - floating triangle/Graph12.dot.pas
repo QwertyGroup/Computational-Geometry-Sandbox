@@ -33,7 +33,7 @@ procedure pField;
             for j:=1 to m do
                 Table[i,j]:=0;
     end;
-{----TableWrite----} {Вывод таблицы} {переводим цифры в символы}
+{----TableWrite----} {Вывод таблицы} {Переводим цифры в символы}
 procedure pTWr;
     begin
         for i:=1 to n do
@@ -49,14 +49,21 @@ procedure pTWr;
 {----DotAssignment----} {Задание параметров точки}
 procedure pDotAssignment(var dot:Tdot);
     begin
-
+        randomize;
+        dot.x0:=random(79)+1;
+        dot.y0:=random(24)+1;
+        dot.velotsityX:=random(5)+1;
+        dot.velotsityY:=random(5)+1;
     end;
 {----Main----}
 begin
     pDotAssignment(dot1);
 
     {BeginOfdeBugBlock}
-    
+    //writeln(dot1.x0);
+    //writeln(dot1.y0);
+    //writeln(dot1.velotsityX);
+    //writeln(dot1.velotsityY);
     {EndOfdeBugBlock  }
 
     readln;
