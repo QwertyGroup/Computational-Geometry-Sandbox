@@ -20,7 +20,7 @@ type    Tt = array[1..n,1..m] of integer;
                     velotsityX:integer; {Скорость точки по оси X                                       }
                     velotsityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
-                    x, y:integer;     {Начальние координаты точки                                    }
+                    x, y:integer;       {Начальние координаты точки                                    }
                 end;  
 
 var     Table:Tt;
@@ -31,7 +31,7 @@ procedure pField;
     begin
         for i:=1 to n do
             for j:=1 to m do
-                Table[i,j]:=0;
+                Table[i,j]:= 0;
     end;
 {----TableWrite----} {Вывод таблицы} {Переводим цифры в символы}
 procedure pTWr;
@@ -50,15 +50,20 @@ procedure pTWr;
 procedure pDotAssignment(var dot:Tdot);
     begin
         randomize;
-        dot.x:=random(79)+1;
-        dot.y:=random(24)+1;
-        dot.velotsityX:=random(5)+1;
-        dot.velotsityY:=random(5)+1;
+        dot.x:= random(79)+1;
+        dot.y:= random(24)+1;
+        dot.velotsityX:= random(5)+1;
+        dot.velotsityY:= random(5)+1;
     end;
 {----PositionCalculation----}
 procedure pPosCalc(var dot:Tdot);
     begin
-
+        dot.x:= dot.x + dot.velotsityX;
+        dot.y:= dot.y+ dot.velotsityY;
+        if (dot.x > m) or (dot.x < 1) then 
+            dot.velotsityX:= -dot.velotsityX;
+        if (dot.y > n) or (dot.y < 1) then 
+            dot.velotsityY:= -dot.velotsityY;
     end;
 {----Main----}
 begin
