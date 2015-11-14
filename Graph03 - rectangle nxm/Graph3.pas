@@ -1,19 +1,14 @@
 {graph 3 ex}
 uses crt;
 const	b = 20;	{y}
-		a = 20; {x}
+		a = 37; {x}
 var i, j: integer;
 	 x, y: real;
-{----f(y)----}
-{procedure f(a);
-	begin
-		f:=a		
-	end;}
 {----Main----}
 begin
- for i:=1 to round(b) do
+ for i:=1 to b do
  	begin
- 		for j:= 1 to round(a) do write(char(249));
+ 		for j:= 1 to a do write(char(249));
  		writeln;
  	end;
 
@@ -22,12 +17,8 @@ begin
  	begin
  		y:=y+0.01;
  		x:=y*(a/b);
- 		{gotoxy(round(x+0.5),round(y));	
- 		write(char(248));}
 		gotoxy(round(x+0.5),round(y+0.5));
  		write(char(248));
- 		{gotoxy(trunc(x),trunc(y));
- 		write(char(248));}
  	end;
  	readln;
 end.
