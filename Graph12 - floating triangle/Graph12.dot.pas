@@ -42,7 +42,7 @@ procedure pTWr;
                 for j:=1 to m do
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота }
-                        1:begin TextColor(11); write(char(248)); end; {1 - точка   }
+                        1..2:begin TextColor(11); write(char(248)); end; {1 - точка   }
                     end;
                 writeln;
             end;
@@ -83,6 +83,7 @@ var l:integer;
 begin
     pDotAssignment(dot1);
     pDotAssignment(dot2);
+    
     {BeginOfdeBugBlock}
     //pField;
     {EndOfdeBugBlock  }
@@ -96,6 +97,7 @@ begin
             pTWr;
             delay(300);
         end;
+
     {BeginOfdeBugBlock}
     //writeln(dot1.x);
     //writeln(dot1.y);
