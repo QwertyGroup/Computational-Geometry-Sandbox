@@ -56,7 +56,7 @@ procedure pDotAssignment(var dot:Tdot);
         dot.velotsityX:= 5 - random(11);
         dot.velotsityY:= 5 - random(11);
     end;
-{----PositionCalculation----}
+{----PositionCalculation----} {Просчет позиции точки}
 procedure pPosCalc(var dot:Tdot);
     begin
         dot.x:= dot.x + dot.velotsityX;
@@ -72,30 +72,31 @@ procedure pPosCalc(var dot:Tdot);
         if (dot.y > n) or (dot.y < 1) then
             dot.y:= dot.y + dot.velotsityY;
     end;
-{----DotMotion----}
+{----DotMotion----} {Движение точки}
 procedure pDotMotion(var dot:Tdot);
     begin
         inc(Table[dot.y, dot.x]);
         pPosCalc(dot); 
     end;
 {----Main----}
-var l:integer;
+const   fr = 20;   {Кол-во кадров }
+var     l:integer; {Счетчик кадров}
 begin
-    pDotAssignment(dot1);
-    pDotAssignment(dot2);
-    
+    pDotAssignment(dot1); {Задание параметров 1 точки}
+    pDotAssignment(dot2); {Задание параметров 2 точки}
+
     {BeginOfdeBugBlock}
     //pField;
     {EndOfdeBugBlock  }
 
-    for l:=1 to 20 do
+    for l:=1 to fr do
         begin
-            pField;
-            pDotMotion(dot1);
-            pDotMotion(dot2);
-            clrscr;
-            pTWr;
-            delay(300);
+            pField;           {Заполнеие таблицы}
+            pDotMotion(dot1); {Обработка 1 точки}
+            pDotMotion(dot2); {Обработка 2 точки}
+            clrscr;           {Чистим экран     }
+            pTWr;             {Виводим таблицу  }
+            delay(300);       {Ждем 0.3 секунды }
         end;
 
     {BeginOfdeBugBlock}
