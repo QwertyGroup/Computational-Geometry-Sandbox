@@ -61,9 +61,9 @@ procedure pPosCalc(var dot:Tdot);
         dot.x:= dot.x + dot.velotsityX;
         dot.y:= dot.y + dot.velotsityY;
 
-        if (dot.x > m) or (dot.x < 1) then
+        if (dot.x >= m) or (dot.x <= 1) then
             dot.velotsityX:= -dot.velotsityX;
-        if (dot.y > n) or (dot.y < 1) then
+        if (dot.y >= n) or (dot.y <= 1) then
             dot.velotsityY:= -dot.velotsityY;
 
         if (dot.x > m) or (dot.x < 1) then
@@ -80,7 +80,7 @@ procedure pTest;
         clrscr;
         pTWr;
         pPosCalc(dot1);
-        delay(300);
+        delay(50);
         end;
 {----Main----}
 var l:integer;
@@ -90,7 +90,7 @@ begin
     pField;
     {EndOfdeBugBlock  }
 
-    for l:=1 to 30 do
+    for l:=1 to 50 do
         pTest;
     {BeginOfdeBugBlock}
     //writeln(dot1.x);
