@@ -38,7 +38,7 @@ procedure pTWr;
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота                 }
                         1:begin TextColor(7); write(char(249)); end;  {1 - пустота                 }
-                        2:begin TextColor(7); write(char(249)); end;  {2 - пустота                 }                        
+                        2:begin TextColor(7); write(char(249)); end;  {2 - пустота                 }
                         3:begin TextColor(13); write(char(248)); end; {3 - пересечение окружностей }
                         4:begin TextColor(11); write(char(248)); end; {4 - контур 1 окружности     }
                         5:begin TextColor(14); write(char(248)); end; {5 - контур 2 окружности     }

@@ -12,15 +12,18 @@
 
 uses 	crt;
 
-type	tt = array[1..a,1..b] of integer;
+const   m = 79;{x} {размеры поля}
+        n = 24;{y} 
+
+type	tt = array[1..n,1..m] of integer;      
 
 var		Table:tt;
 		i, j:integer;
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
     begin
-        for i:=1 to a do
-            for j:=1 to b do
+        for i:=1 to n do
+            for j:=1 to m do
                 Table[i,j]:=0;
     end;
 {----Main----}
