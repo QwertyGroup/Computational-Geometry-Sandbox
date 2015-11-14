@@ -52,23 +52,46 @@ procedure pDotAssignment(var dot:Tdot);
         randomize;
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
-        dot.velotsityX:= random(5)+1;
-        dot.velotsityY:= random(5)+1;
+        dot.velotsityX:= 5 - random(11);
+        dot.velotsityY:= 5 - random(11);
     end;
 {----PositionCalculation----}
 procedure pPosCalc(var dot:Tdot);
     begin
         dot.x:= dot.x + dot.velotsityX;
-        dot.y:= dot.y+ dot.velotsityY;
-        if (dot.x > m) or (dot.x < 1) then 
+        dot.y:= dot.y + dot.velotsityY;
+
+        if (dot.x > m) or (dot.x < 1) then
             dot.velotsityX:= -dot.velotsityX;
-        if (dot.y > n) or (dot.y < 1) then 
+        if (dot.y > n) or (dot.y < 1) then
             dot.velotsityY:= -dot.velotsityY;
+
+        if (dot.x > m) or (dot.x < 1) then
+            dot.x:= dot.x + dot.velotsityX;
+        if (dot.y > n) or (dot.y < 1) then
+            dot.y:= dot.y + dot.velotsityY;
+
     end;
+{----Test----}
+procedure pTest;
+    begin
+        //pField;
+        inc(Table[dot1.y, dot1.x]);
+        clrscr;
+        pTWr;
+        pPosCalc(dot1);
+        delay(300);
+        end;
 {----Main----}
+var l:integer;
 begin
     pDotAssignment(dot1);
+    {BeginOfdeBugBlock}
+    pField;
+    {EndOfdeBugBlock  }
 
+    for l:=1 to 30 do
+        pTest;
     {BeginOfdeBugBlock}
     //writeln(dot1.x);
     //writeln(dot1.y);
@@ -78,3 +101,25 @@ begin
 
     readln;
 end.
+
+if (dot.x > m) then
+            begin
+                dot.x:= m;
+                dot.y:= -round(dot.velotsityY / 2);
+            end;
+        if (dot.x < 1) then
+            begin
+                dot.x:= 1;
+                dot.y:= -round(dot.velotsityY / 2);
+            end;
+
+        if (dot.y > n) then
+            begin
+                dot.y:= n;
+                dot.x:= -round(dot.velotsityX / 2);
+            end;
+        if (dot.y < 1) then
+            begin
+                dot.y:= 1;
+                dot.x:= -round(dot.velotsityX / 2);
+            end;
