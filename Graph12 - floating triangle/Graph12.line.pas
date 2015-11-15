@@ -19,6 +19,7 @@ type    Tt = array[1..n,1..m] of integer;
 
 var     Table:Tt;
         i, j:integer;
+
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
     begin
@@ -46,13 +47,13 @@ procedure pLine(x1, y1, x2, y2, id:integer);
         k:real;
         b:real;
     begin
-        if (x1 = x2) and (y1 = y2) then {Если точка             }
+        if (x1 = x2) and (y1 = y2) then {Если точка              }
             begin
                 Table[y1,x1]:= id;
                 exit;
             end;
 
-        if (x1 = x2) and (y2 > y1) then {Если вертикальная линия}
+        if (x1 = x2) and (y2 > y1) then {Если вертикальная линия }
             begin
                 for i:=y1 to y2 do
                     Table[i,x1]:= id;
@@ -65,7 +66,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 exit;
             end;
 
-        if (y1 = y2) and (x2 > x1) then {Если горизонтальная линия}
+        if (y1 = y2) and (x2 > x1) then {Если горизонтальная линия }
             begin
                 for j:=x1 to x2 do
                     Table[y1,j]:= id;

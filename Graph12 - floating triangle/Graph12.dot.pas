@@ -29,6 +29,7 @@ var     Table:Tt;
         dot1:Tdot;
         dot2:Tdot;
         dot3:Tdot;
+
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
     begin
