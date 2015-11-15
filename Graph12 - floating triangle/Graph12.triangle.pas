@@ -197,9 +197,9 @@ procedure pFirstTriangle;
 {----SecondTriangle----}
 procedure pSecondTriangle;
     begin
-        pPosCalc(dot4);                             {Обработка 1 точки}
-        pPosCalc(dot5);                             {Обработка 2 точки}
-        pPosCalc(dot6);                             {Обработка 3 точки}
+        pPosCalc(dot4);                             {Обработка 4 точки}
+        pPosCalc(dot5);                             {Обработка 5 точки}
+        pPosCalc(dot6);                             {Обработка 6 точки}
         pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
         pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
         pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
@@ -216,10 +216,11 @@ procedure pTWrdBug;
             end;
     end;
 {----Main----}
-const   fr = 30;             {Кол-во кадров             }
-        del = 500;           {Время ожиданя             }
+const   fr = 20;             {Кол-во кадров             }
+        del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
 begin
+    //readln; 
     randomize;               {Подрубаем рандом          }
     pDotAssignment(dot1,1);  {Задание параметров 1 точки}
     pDotAssignment(dot2,2);  {Задание параметров 2 точки}
