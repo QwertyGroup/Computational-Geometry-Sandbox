@@ -28,6 +28,7 @@ var     Table:Tt;
         i, j:integer;
         dot1:Tdot;
         dot2:Tdot;
+        dot3:Tdot;
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
     begin
@@ -42,9 +43,10 @@ procedure pTWr;
             begin
                 for j:=1 to m do
                     case Table[i,j] of
-                        0:begin TextColor(7); write(char(249)); end;  {0 - пустота }
+                        0:begin TextColor(7);  write(char(249)); end; {0 - пустота }
                         1:begin TextColor(11); write(char(248)); end; {1 - точка   }
                         2:begin TextColor(14); write(char(248)); end; {2 - точка   }
+                        3:begin TextColor(13); write(char(248)); end; {3 - точка   }
                     end;
                 writeln;
             end;
@@ -88,6 +90,7 @@ begin
     randomize;
     pDotAssignment(dot1,1); {Задание параметров 1 точки}
     pDotAssignment(dot2,2); {Задание параметров 2 точки}
+    pDotAssignment(dot3,3); {Задание параметров 3 точки}
 
     {BeginOfdeBugBlock}
     //pField;
@@ -102,6 +105,7 @@ begin
             //pField;           {Заполнеие таблицы}
             pDotMotion(dot1); {Обработка 1 точки}
             pDotMotion(dot2); {Обработка 2 точки}
+            pDotMotion(dot3); {Обработка 3 точки}
             clrscr;           {Чистим экран     }
             pTWr;             {Виводим таблицу  }
             delay(300);       {Ждем 0.3 секунды }
