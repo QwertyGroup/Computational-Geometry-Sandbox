@@ -41,6 +41,16 @@ procedure pTWr;
                 writeln;
             end;
     end;
+{----EqualsOrIncrease----}
+procedure EquOrInc(y, x, id:integer);
+    begin
+        if id = 1 then
+            Table[y,x]:= id;
+        if (id = 2) and (Table[y,x] = 0) then
+            Table[y,x]:= id
+        else
+            inc(Table[y,x], id);
+    end;
 {----Line----}
 procedure pLine(x1, y1, x2, y2, id:integer);
     var x, y:real;
@@ -120,6 +130,7 @@ begin
     clrscr;
     pField;
     pLine(ar1 ,ar2 ,ar3 ,ar4 ,1);
+    pLine(1, 1, 79, 24, 2);
     pTWr;
     readln;
     readln;
