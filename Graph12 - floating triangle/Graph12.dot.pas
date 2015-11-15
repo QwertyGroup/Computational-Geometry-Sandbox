@@ -102,7 +102,7 @@ begin
 
     for l:=1 to fr do
         begin
-            //pField;           {Заполнеие таблицы}
+            pField;           {Заполнеие таблицы}
             pDotMotion(dot1); {Обработка 1 точки}
             pDotMotion(dot2); {Обработка 2 точки}
             pDotMotion(dot3); {Обработка 3 точки}
