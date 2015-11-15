@@ -128,7 +128,9 @@ var ar1, ar2, ar3, ar4:integer;
     ar5, ar6, ar7, ar8:integer;
 begin
     clrscr;
-    read(ar1, ar2, ar3, ar4);
+    write('x1, y1, x2, y2: ');
+    readln(ar1, ar2, ar3, ar4);
+    write('x1, y1, x2, y2: ');
     read(ar5, ar6, ar7, ar8);
     clrscr;
     pField;
