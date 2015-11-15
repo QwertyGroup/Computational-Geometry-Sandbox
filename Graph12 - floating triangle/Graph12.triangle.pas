@@ -8,7 +8,7 @@
   {$H-,I-,OBJECTCHECKS-,Q-,R-,S-}
 {$ENDIF RELEASE}
 
-{graph 12 - floating triangle (line)}
+{graph 12 - floating triangle}
 
 uses    crt;
 
