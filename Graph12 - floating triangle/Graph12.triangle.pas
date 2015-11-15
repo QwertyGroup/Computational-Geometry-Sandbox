@@ -162,7 +162,7 @@ procedure pPosCalc(var dot:Tdot);
             dot.y:= dot.y + dot.velotsityY;
     end;
 {----FillTriangle----}
-procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);
+procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);    {Заливка треульника}
     var a, b, c:integer;
     begin
         for i:=1 to n do 
@@ -192,7 +192,7 @@ procedure pFirstTriangle;
         pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);   {1 сторона        }
         pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);   {2 сторона        }
         pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);   {3 сторона        }
-        pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);
+        pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);   {Заливка 1 треульника}
     end;
 {----SecondTriangle----}
 procedure pSecondTriangle;
@@ -203,7 +203,7 @@ procedure pSecondTriangle;
         pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
         pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
         pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
-        pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);
+        pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);   {Заливка 2 треульника}
     end;
 {----TableWriteDeBug----}
 procedure pTWrdBug;
@@ -230,11 +230,11 @@ begin
     for l:=1 to fr do
         begin
             pField;          {Заполнеие таблицы         }
-            pFirstTriangle;  {Рисуем 1 треугольник      }       
-            pSecondTriangle; {Рисуем 2 треугольник      }       
+            pFirstTriangle;  {Рисуем 1 треугольник      }
+            pSecondTriangle; {Рисуем 2 треугольник      }
             clrscr;          {Чистим экран              }
-            //pTWr;            {Виводим таблицу           }
-            pTWrdBug;
+            pTWr;            {Виводим таблицу           }
+            //pTWrdBug;
             delay(300);      {Ждем 0.3 секунды          }
         end;
 
