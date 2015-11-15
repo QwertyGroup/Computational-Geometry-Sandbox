@@ -8,7 +8,7 @@
   {$H-,I-,OBJECTCHECKS-,Q-,R-,S-}
 {$ENDIF RELEASE}
 
-{graph 12 - floating triangle}
+{graph 12 - 2 floating triangles}
 
 uses    crt;
 
@@ -26,12 +26,12 @@ type    Tt = array[1..n,1..m] of integer;
 
 var     Table:Tt;
         i, j:integer;
-        dot1:Tdot;
-        dot2:Tdot;
-        dot3:Tdot;
-        dot4:Tdot;
-        dot5:Tdot;
-        dot6:Tdot;
+        dot1:Tdot;	{1 точка}
+        dot2:Tdot;	{2 точка}
+        dot3:Tdot;	{3 точка}
+        dot4:Tdot;	{4 точка}
+        dot5:Tdot;	{5 точка}
+        dot6:Tdot;	{6 точка}
 
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
