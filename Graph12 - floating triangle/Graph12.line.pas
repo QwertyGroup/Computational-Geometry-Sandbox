@@ -65,7 +65,9 @@ procedure pLine(x1, y1, x2, y2, id:integer);
 {----Main----}
 var ar1, ar2, ar3, ar4:integer;
 begin
+    clrscr;
     read(ar1 ,ar2 ,ar3 ,ar4);
+    clrscr;
     pField;
     pLine(ar1 ,ar2 ,ar3 ,ar4 ,1);
     pTWr;
