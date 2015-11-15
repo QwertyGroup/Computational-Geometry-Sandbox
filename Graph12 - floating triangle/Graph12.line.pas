@@ -82,19 +82,35 @@ procedure pLine(x1, y1, x2, y2, id:integer);
         k:= (y1-y2) / (x1-x2);
         b:= y1 - k*x1;
 
-        for i:=y1 to y2 do 
-            begin
-                y:= i;
-                x:= (y-b) / k;
-                Table[round(y),round(x)]:= id;
-            end;
+        if y2 > y1 then
+            for i:=y1 to y2 do 
+                begin
+                    y:= i;
+                    x:= (y-b) / k;
+                    Table[round(y),round(x)]:= id;
+                end
+        else if y2 < y1 then 
+            for i:=y2 to y1 do
+                begin
+                    y:= i;
+                    x:= (y-b) / k;
+                    Table[round(y),round(x)]:= id;
+                end;
 
-        for j:=x1 to x2 do 
-            begin
-                x:= j;
-                y:= k*x + b;
-                Table[round(y),round(x)]:= id;
-            end;    
+        if x2 > x1 then
+            for j:=x1 to x2 do 
+                begin
+                    x:= j;
+                    y:= k*x + b;
+                    Table[round(y),round(x)]:= id;
+                end
+        else if x2 < x1 then
+            for j:= x2 to x1 do 
+                begin
+                    x:= j;
+                    y:= k*x + b;
+                    Table[round(y),round(x)]:= id;
+                end;
     end;
 {----Main----}
 var ar1, ar2, ar3, ar4:integer;
