@@ -21,7 +21,7 @@ type    Tt = array[1..n,1..m] of integer;
                     velotsityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
                     x, y:integer;       {Начальние координаты точки                                    }
-                    id:byte;            {Номер точки                                                   }
+                    id:integer;         {Номер точки                                                   }
                 end;
 
 var     Table:Tt;
@@ -137,7 +137,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 end;
     end;
 {----DotAssignment----} {Задание параметров точки}
-procedure pDotAssignment(var dot:Tdot; id:byte);
+procedure pDotAssignment(var dot:Tdot; id:integer);
     begin
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
@@ -161,6 +161,28 @@ procedure pPosCalc(var dot:Tdot);
         if (dot.y > n) or (dot.y < 1) then
             dot.y:= dot.y + dot.velotsityY;
     end;
+{----FillTriangle----}
+procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);
+    var a, b, c:integer;
+    begin
+        for i:=1 to n do 
+            for j:=1 to m do
+                begin
+                    a:=(x1 - j) * (y2 - y1) - (x2 - x1) * (y1 - i);
+                    b:=(x2 - j) * (y3 - y2) - (x3 - x2) * (y2 - i);
+                    c:=(x3 - j) * (y1 - y3) - (x1 - x3) * (y3 - i);
+
+                    if ((a>=0) and (b>=0) and (c>=0)) or ((a<=0) and (b<=0) and (c<=0)) then
+                        begin
+                            if id = 1 then 
+                                Table[i,j]:= id;
+                            if (id = 2) and (Table[i,j] = 0) then
+                                Table[i,j]:= id
+                            else if (id = 2) and (Table[i,j] = 1) then
+                                inc(Table[i,j], id);
+                        end;
+                end;
+    end;
 {----FirstTriangle----}
 procedure pFirstTriangle;
     begin
@@ -170,6 +192,7 @@ procedure pFirstTriangle;
         pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);   {1 сторона        }
         pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);   {2 сторона        }
         pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);   {3 сторона        }
+        pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);
     end;
 {----SecondTriangle----}
 procedure pSecondTriangle;
@@ -180,6 +203,17 @@ procedure pSecondTriangle;
         pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
         pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
         pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
+        pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);
+    end;
+{----TableWriteDeBug----}
+procedure pTWrdBug;
+    begin
+        for i:=1 to n do
+            begin
+                for j:=1 to m do
+                    write(Table[i,j]);
+                writeln;
+            end;
     end;
 {----Main----}
 const   fr = 25;             {Кол-во кадров             }
@@ -199,7 +233,8 @@ begin
             pFirstTriangle;  {Рисуем 1 треугольник      }       
             pSecondTriangle; {Рисуем 2 треугольник      }       
             clrscr;          {Чистим экран              }
-            pTWr;            {Виводим таблицу           }
+            //pTWr;            {Виводим таблицу           }
+            pTWrdBug;
             delay(300);      {Ждем 0.3 секунды          }
         end;
 
