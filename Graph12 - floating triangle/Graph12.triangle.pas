@@ -216,7 +216,8 @@ procedure pTWrdBug;
             end;
     end;
 {----Main----}
-const   fr = 25;             {Кол-во кадров             }
+const   fr = 30;             {Кол-во кадров             }
+        del = 500;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
 begin
     randomize;               {Подрубаем рандом          }
@@ -235,7 +236,7 @@ begin
             clrscr;          {Чистим экран              }
             pTWr;            {Виводим таблицу           }
             //pTWrdBug;
-            delay(300);      {Ждем 0.3 секунды          }
+            delay(del);      {Ждем del ms               }
         end;
 
     readln;
