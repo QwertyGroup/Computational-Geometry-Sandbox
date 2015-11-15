@@ -8,7 +8,7 @@
   {$H-,I-,OBJECTCHECKS-,Q-,R-,S-}
 {$ENDIF RELEASE}
 
-{graph 12 - 2 floating triangles}
+{graph 12 - 2 floating triangles with intersection}
 
 uses    crt;
 
