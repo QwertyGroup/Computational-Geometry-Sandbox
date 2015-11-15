@@ -61,6 +61,13 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 x:= (y-b) / k;
                 Table[round(y),round(x)]:= id;
             end;
+
+        for j:=x1 to x2 do 
+            begin
+                x:= j;
+                y:= k*x + b;
+                Table[round(y),round(x)]:= id;
+            end;    
     end;
 {----Main----}
 var ar1, ar2, ar3, ar4:integer;
