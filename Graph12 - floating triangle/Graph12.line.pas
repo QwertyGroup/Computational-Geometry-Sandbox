@@ -61,7 +61,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
             end
         else
             begin
-                for i:=y2 to y1 do
+                for i:=y2 downto y1 do
                     Table[i,x1]:= id;
                 exit;
             end;
@@ -74,7 +74,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
             end
         else
             begin
-                for j:=x2 to x1 do
+                for j:=x2 downto x1 do
                     Table[y1,j]:= id;
                 exit;
             end;
