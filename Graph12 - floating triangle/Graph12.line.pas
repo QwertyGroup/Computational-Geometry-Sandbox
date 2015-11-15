@@ -125,13 +125,15 @@ procedure pLine(x1, y1, x2, y2, id:integer);
     end;
 {----Main----}
 var ar1, ar2, ar3, ar4:integer;
+    ar5, ar6, ar7, ar8:integer;
 begin
     clrscr;
-    read(ar1 ,ar2 ,ar3 ,ar4);
+    read(ar1, ar2, ar3, ar4);
+    read(ar5, ar6, ar7, ar8);
     clrscr;
     pField;
-    pLine(ar1 ,ar2 ,ar3 ,ar4 ,1);
-    pLine(1, 1, 79, 24, 2);
+    pLine(ar1, ar2, ar3, ar4, 1);
+    pLine(ar5, ar6, ar7, ar8, 2);
     pTWr;
     readln;
     readln;
