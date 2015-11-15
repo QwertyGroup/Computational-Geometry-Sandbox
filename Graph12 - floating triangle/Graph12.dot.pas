@@ -43,7 +43,8 @@ procedure pTWr;
                 for j:=1 to m do
                     case Table[i,j] of
                         0:begin TextColor(7); write(char(249)); end;  {0 - пустота }
-                        1..2:begin TextColor(11); write(char(248)); end; {1 - точка   }
+                        1:begin TextColor(11); write(char(248)); end; {1 - точка   }
+                        2:begin TextColor(14); write(char(248)); end; {2 - точка   }
                     end;
                 writeln;
             end;
