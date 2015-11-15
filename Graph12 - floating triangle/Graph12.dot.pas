@@ -22,7 +22,7 @@ type    Tt = array[1..n,1..m] of integer;
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
                     x, y:integer;       {Начальние координаты точки                                    }
                     id:byte;            {Номер точки                                                   }
-                end;  
+                end;
 
 var     Table:Tt;
         i, j:integer;
