@@ -187,5 +187,4 @@ begin
         end;
 
     readln;
-    readln;
 end.
