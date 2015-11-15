@@ -83,7 +83,7 @@ const   fr = 20;   {Кол-во кадров }
 var     l:integer; {Счетчик кадров}
 begin
     pDotAssignment(dot1); {Задание параметров 1 точки}
-    pDotAssignment(dot2); {Задание параметров 2 точки}
+    //pDotAssignment(dot2); {Задание параметров 2 точки}
 
     {BeginOfdeBugBlock}
     //pField;
