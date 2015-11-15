@@ -15,7 +15,7 @@ uses    crt;
 const   m = 79; {x} {Размеры поля}
         n = 24; {y} 
 
-type    Tt = array[1..n,1..m] of integer; 
+type    Tt = array[1..n,1..m] of integer;
 
 var     Table:Tt;
         i, j:integer;
@@ -37,7 +37,7 @@ procedure pTWr;
                         0:begin TextColor(7);  write(char(249)); end; {0 - пустота                 }
                         1:begin TextColor(11); write(char(248)); end; {1 - линия синего цвета      }
                         2:begin TextColor(14); write(char(248)); end; {2 - линия желтого цвета     }
-                        3..6:begin TextColor(13); write(char(248)); end; {3 - пересечение 1 и 2 цветов}
+                        3:begin TextColor(13); write(char(248)); end; {3 - пересечение 1 и 2 цветов}
                     end;
                 writeln;
             end;
@@ -90,10 +90,10 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 exit;
             end;
 
-        k:= (y1-y2) / (x1-x2);
-        b:= y1 - k*x1;
+        k:= (y1-y2) / (x1-x2);  {Коэффициент при x      }
+        b:= y1 - k*x1;          {Коэффициент смещения   }
 
-        if y2 > y1 then
+        if y2 > y1 then         {Если линия диагональная}
             for i:=y1 to y2 do 
                 begin
                     y:= i;
@@ -124,19 +124,21 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 end;
     end;
 {----Main----}
-var ar1, ar2, ar3, ar4:integer;
-    ar5, ar6, ar7, ar8:integer;
+var ar1, ar2, ar3, ar4:integer; {Координаты 1 линии}
+    ar5, ar6, ar7, ar8:integer; {Координаты 2 линии}
 begin
     clrscr;
     write('x1, y1, x2, y2: ');
-    readln(ar1, ar2, ar3, ar4);
+    readln(ar1, ar2, ar3, ar4); {Ввод данных}
     write('x1, y1, x2, y2: ');
-    read(ar5, ar6, ar7, ar8);
+    read(ar5, ar6, ar7, ar8);   {Ввод данных}
     clrscr;
-    pField;
-    pLine(ar1, ar2, ar3, ar4, 1);
-    pLine(ar5, ar6, ar7, ar8, 2);
-    pTWr;
+
+    pField;                         {Заполняем таблицу 0}
+    pLine(ar1, ar2, ar3, ar4, 1);   {Рисуем синюю линию }
+    pLine(ar5, ar6, ar7, ar8, 2);   {Рисуем желтую линию}
+    pTWr;                           {Виводим таблицу    }
+
     readln;
     readln;
 end.
