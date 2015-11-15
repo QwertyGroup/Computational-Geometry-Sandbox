@@ -21,6 +21,7 @@ type    Tt = array[1..n,1..m] of integer;
                     velotsityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
                     x, y:integer;       {Начальние координаты точки                                    }
+                    id:byte;            {Номер точки                                                   }
                 end;  
 
 var     Table:Tt;
@@ -50,7 +51,6 @@ procedure pTWr;
 {----DotAssignment----} {Задание параметров точки}
 procedure pDotAssignment(var dot:Tdot);
     begin
-        randomize;
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
         dot.velotsityX:= 5 - random(11);
@@ -82,20 +82,21 @@ procedure pDotMotion(var dot:Tdot);
 const   fr = 20;   {Кол-во кадров }
 var     l:integer; {Счетчик кадров}
 begin
+    randomize;
     pDotAssignment(dot1); {Задание параметров 1 точки}
-    //pDotAssignment(dot2); {Задание параметров 2 точки}
+    pDotAssignment(dot2); {Задание параметров 2 точки}
 
     {BeginOfdeBugBlock}
     //pField;
-    dot2.x:=20;
-    dot2.y:=20;
-    dot2.velotsityX:=1;
-    dot2.velotsityY:=1;
+    //dot2.x:=20;
+    //dot2.y:=20;
+    //dot2.velotsityX:=1;
+    //dot2.velotsityY:=1;
     {EndOfdeBugBlock  }
 
     for l:=1 to fr do
         begin
-            pField;           {Заполнеие таблицы}
+            //pField;           {Заполнеие таблицы}
             pDotMotion(dot1); {Обработка 1 точки}
             pDotMotion(dot2); {Обработка 2 точки}
             clrscr;           {Чистим экран     }
