@@ -87,6 +87,10 @@ begin
 
     {BeginOfdeBugBlock}
     //pField;
+    dot2.x:=20;
+    dot2.y:=20;
+    dot2.velotsityX:=1;
+    dot2.velotsityY:=1;
     {EndOfdeBugBlock  }
 
     for l:=1 to fr do
