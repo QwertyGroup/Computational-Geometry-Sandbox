@@ -59,7 +59,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                     Table[i,x1]:= id;
                 exit;
             end
-        else
+        else if (x1 = x2) and (y2 < y1) then
             begin
                 for i:=y2 downto y1 do
                     Table[i,x1]:= id;
@@ -72,7 +72,7 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                     Table[y1,j]:= id;
                 exit;
             end
-        else
+        else if (y1 = y2) and (x2 < x1) then
             begin
                 for j:=x2 downto x1 do
                     Table[y1,j]:= id;
