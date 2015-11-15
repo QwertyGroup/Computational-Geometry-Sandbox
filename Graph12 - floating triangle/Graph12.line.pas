@@ -43,7 +43,7 @@ procedure pTWr;
             end;
     end;
 {----EqualsOrIncrease----}
-procedure pEquOrInc(y, x, id:integer);
+procedure pEquOrInc(y, x, id:integer); {Пересечение ли ?}
     begin
         if id = 1 then
             Table[y,x]:= id;
