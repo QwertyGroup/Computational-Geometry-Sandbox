@@ -16,7 +16,7 @@ const   m = 79; {x} {Размеры поля}
         n = 24; {y} 
 
 type    Tt = array[1..n,1..m] of integer;
-		Tdot = record
+        Tdot = record
                     velotsityX:integer; {Скорость точки по оси X                                       }
                     velotsityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
@@ -26,12 +26,12 @@ type    Tt = array[1..n,1..m] of integer;
 
 var     Table:Tt;
         i, j:integer;
-        dot1:Tdot;	{1 точка}
-        dot2:Tdot;	{2 точка}
-        dot3:Tdot;	{3 точка}
-        dot4:Tdot;	{4 точка}
-        dot5:Tdot;	{5 точка}
-        dot6:Tdot;	{6 точка}
+        dot1:Tdot;  {1 точка}
+        dot2:Tdot;  {2 точка}
+        dot3:Tdot;  {3 точка}
+        dot4:Tdot;  {4 точка}
+        dot5:Tdot;  {5 точка}
+        dot6:Tdot;  {6 точка}
 
 {----Field----} {Заполнение таблицы нулями}
 procedure pField;
@@ -163,44 +163,44 @@ procedure pPosCalc(var dot:Tdot);
     end;
 {----FirstTriangle----}
 procedure pFirstTriangle;
-	begin
-		pPosCalc(dot1);								{Обработка 1 точки}
-        pPosCalc(dot2); 							{Обработка 2 точки}
-        pPosCalc(dot3); 							{Обработка 3 точки}
-        pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);	{1 сторона		  }
-        pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);	{2 сторона        }
-        pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);	{3 сторона        }
-	end;
+    begin
+        pPosCalc(dot1);                             {Обработка 1 точки}
+        pPosCalc(dot2);                             {Обработка 2 точки}
+        pPosCalc(dot3);                             {Обработка 3 точки}
+        pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);   {1 сторона        }
+        pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);   {2 сторона        }
+        pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);   {3 сторона        }
+    end;
 {----SecondTriangle----}
 procedure pSecondTriangle;
-	begin
-		pPosCalc(dot4);								{Обработка 1 точки}
-        pPosCalc(dot5); 							{Обработка 2 точки}
-        pPosCalc(dot6); 							{Обработка 3 точки}
-        pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);	{1 сторона		  }
-        pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);	{2 сторона        }
-        pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);	{3 сторона        }
-	end;
+    begin
+        pPosCalc(dot4);                             {Обработка 1 точки}
+        pPosCalc(dot5);                             {Обработка 2 точки}
+        pPosCalc(dot6);                             {Обработка 3 точки}
+        pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
+        pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
+        pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
+    end;
 {----Main----}
-const   fr = 25;   			 {Кол-во кадров             }
-var     l:integer; 			 {Счетчик кадров            }
+const   fr = 25;             {Кол-во кадров             }
+var     l:integer;           {Счетчик кадров            }
 begin
-	randomize;				 {Подрубаем рандом		    }
-    pDotAssignment(dot1,1);	 {Задание параметров 1 точки}
-    pDotAssignment(dot2,2);	 {Задание параметров 2 точки}
-    pDotAssignment(dot3,3);	 {Задание параметров 3 точки}
-    pDotAssignment(dot4,4);	 {Задание параметров 4 точки}
-    pDotAssignment(dot5,5);	 {Задание параметров 5 точки}
-    pDotAssignment(dot6,6);	 {Задание параметров 6 точки}
+    randomize;               {Подрубаем рандом          }
+    pDotAssignment(dot1,1);  {Задание параметров 1 точки}
+    pDotAssignment(dot2,2);  {Задание параметров 2 точки}
+    pDotAssignment(dot3,3);  {Задание параметров 3 точки}
+    pDotAssignment(dot4,4);  {Задание параметров 4 точки}
+    pDotAssignment(dot5,5);  {Задание параметров 5 точки}
+    pDotAssignment(dot6,6);  {Задание параметров 6 точки}
 
-	for l:=1 to fr do
+    for l:=1 to fr do
         begin
-            pField;        	 {Заполнеие таблицы         }
-            pFirstTriangle;	 {Рисуем 1 треугольник	    }		
-            pSecondTriangle; {Рисуем 2 треугольник	    }		
-            clrscr;        	 {Чистим экран              }
-            pTWr;          	 {Виводим таблицу           }
-            delay(300);    	 {Ждем 0.3 секунды          }
+            pField;          {Заполнеие таблицы         }
+            pFirstTriangle;  {Рисуем 1 треугольник      }       
+            pSecondTriangle; {Рисуем 2 треугольник      }       
+            clrscr;          {Чистим экран              }
+            pTWr;            {Виводим таблицу           }
+            delay(300);      {Ждем 0.3 секунды          }
         end;
 
     readln;
