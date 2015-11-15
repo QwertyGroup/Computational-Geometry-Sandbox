@@ -46,12 +46,22 @@ procedure pLine(x1, y1, x2, y2, id:integer);
         k:real;
         b:real;
     begin
-        if (x1 = x2) or (y1 = y2) then
+        if (x1 = x2) and (y1 = y2) then {Если точка}
             begin
                 Table[y1,x1]:= id;
                 exit;
             end;
 
+        if x1=x2 then   {Если вертикальная линия}
+            begin
+                for i:=y1 to y2 do
+                    Table[i,x1]:= id;
+            end;
+
+        if y1=y2 then
+            begin
+
+            end;
         k:= (y1-y2) / (x1-x2);
         b:= y1 - k*x1;
 
