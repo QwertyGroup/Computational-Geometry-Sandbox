@@ -49,12 +49,13 @@ procedure pTWr;
             end;
     end;
 {----DotAssignment----} {Задание параметров точки}
-procedure pDotAssignment(var dot:Tdot);
+procedure pDotAssignment(var dot:Tdot; id:byte);
     begin
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
         dot.velotsityX:= 5 - random(11);
         dot.velotsityY:= 5 - random(11);
+        dot.id:=id;
     end;
 {----PositionCalculation----} {Просчет позиции точки}
 procedure pPosCalc(var dot:Tdot);
@@ -75,7 +76,8 @@ procedure pPosCalc(var dot:Tdot);
 {----DotMotion----} {Движение точки}
 procedure pDotMotion(var dot:Tdot);
     begin
-        inc(Table[dot.y, dot.x]);
+        //inc(Table[dot.y, dot.x]);
+        Table[dot.y, dot.x]:= dot.id;
         pPosCalc(dot); 
     end;
 {----Main----}
@@ -83,8 +85,8 @@ const   fr = 20;   {Кол-во кадров }
 var     l:integer; {Счетчик кадров}
 begin
     randomize;
-    pDotAssignment(dot1); {Задание параметров 1 точки}
-    pDotAssignment(dot2); {Задание параметров 2 точки}
+    pDotAssignment(dot1,1); {Задание параметров 1 точки}
+    pDotAssignment(dot2,2); {Задание параметров 2 точки}
 
     {BeginOfdeBugBlock}
     //pField;
