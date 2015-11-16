@@ -216,7 +216,7 @@ procedure pTWrdBug;
             end;
     end;
 {----frames----}
-const   fr = 100;             {Кол-во кадров             }
+const   fr = 100;            {Кол-во кадров             }
         del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
         log:text;            {log - deBug log           } 
