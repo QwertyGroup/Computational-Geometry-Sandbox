@@ -215,10 +215,26 @@ procedure pTWrdBug;
                 writeln;
             end;
     end;
-{----Main----}
-const   fr = 20;             {Кол-во кадров             }
+{----frames----}
+const   fr = 99;             {Кол-во кадров             }
         del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
+        log:text;            {log - deBug log           } 
+{----deBug----}
+procedure pDeBug;
+    begin
+        write(l, ' / ', fr);                {screen}
+
+        writeln(log, l:2, ' / ', fr:2);         {log file}
+        writeln(log, '1: (', dot1.x:2, ' ; ', dot1.y:2, ')');
+        writeln(log, '2: (', dot2.x:2, ' ; ', dot2.y:2, ')');
+        writeln(log, '3: (', dot3.x:2, ' ; ', dot3.y:2, ')');
+        writeln(log, '4: (', dot4.x:2, ' ; ', dot4.y:2, ')');
+        writeln(log, '5: (', dot5.x:2, ' ; ', dot5.y:2, ')');
+        writeln(log, '6: (', dot6.x:2, ' ; ', dot6.y:2, ')');
+        writeln(log,'');
+    end;
+{----Main----}
 begin
     //readln; 
     randomize;               {Подрубаем рандом          }
@@ -229,6 +245,9 @@ begin
     pDotAssignment(dot5,5);  {Задание параметров 5 точки}
     pDotAssignment(dot6,6);  {Задание параметров 6 точки}
 
+    assign(log,'triangle.log.txt');
+    rewrite(log);
+
     for l:=1 to fr do
         begin
             pField;          {Заполнеие таблицы         }
@@ -237,8 +256,11 @@ begin
             clrscr;          {Чистим экран              }
             pTWr;            {Виводим таблицу           }
             //pTWrdBug;
+            pDeBug;
             delay(del);      {Ждем del ms               }
         end;
+
+    close(log);
 
     readln;
 end.
