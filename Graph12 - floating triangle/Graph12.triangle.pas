@@ -218,7 +218,7 @@ procedure pTWrdBug;
     end;
 {----frames----}
 const   fr = 360;            {Кол-во кадров             }
-        del = 150;           {Время ожиданя             }
+        del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
         log:text;            {log - deBug log           } 
 {----deBug----}
@@ -265,7 +265,8 @@ begin
             pField;          {Заполнеие таблицы         }
             pFirstTriangle;  {Рисуем 1 треугольник      }
             pSecondTriangle; {Рисуем 2 треугольник      }
-            clrscr;          {Чистим экран              }
+            //clrscr;          {Чистим экран              }
+            gotoxy(1,1);
             pTWr;            {Виводим таблицу           }
             //pTWrdBug;
             pDeBug;
