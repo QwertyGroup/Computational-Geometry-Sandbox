@@ -192,7 +192,7 @@ procedure pFirstTriangle;
         pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);   {1 сторона        }
         pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);   {2 сторона        }
         pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);   {3 сторона        }
-        pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);   {Заливка 1 треульника}
+        //pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);   {Заливка 1 треульника}
     end;
 {----SecondTriangle----}
 procedure pSecondTriangle;
@@ -203,7 +203,7 @@ procedure pSecondTriangle;
         pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
         pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
         pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
-        pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);   {Заливка 2 треульника}
+        //pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);   {Заливка 2 треульника}
     end;
 {----TableWriteDeBug----}
 procedure pTWrdBug;
@@ -216,7 +216,7 @@ procedure pTWrdBug;
             end;
     end;
 {----frames----}
-const   fr = 100;            {Кол-во кадров             }
+const   fr = 360;            {Кол-во кадров             }
         del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
         log:text;            {log - deBug log           } 
@@ -237,7 +237,7 @@ procedure pDeBug;
     end;
 {----Main----}
 begin
-    //readln; 
+    readln; 
     randomize;               {Подрубаем рандом          }
     pDotAssignment(dot1,1);  {Задание параметров 1 точки}
     pDotAssignment(dot2,2);  {Задание параметров 2 точки}
