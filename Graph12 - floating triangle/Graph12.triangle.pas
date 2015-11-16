@@ -216,22 +216,23 @@ procedure pTWrdBug;
             end;
     end;
 {----frames----}
-const   fr = 99;             {Кол-во кадров             }
+const   fr = 100;             {Кол-во кадров             }
         del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
         log:text;            {log - deBug log           } 
 {----deBug----}
 procedure pDeBug;
     begin
-        write(l, ' / ', fr);                {screen}
+        write(l, ' / ', fr);            {screen}
 
-        writeln(log, l:2, ' / ', fr:2);         {log file}
-        writeln(log, '1: (', dot1.x:2, ' ; ', dot1.y:2, ')');
-        writeln(log, '2: (', dot2.x:2, ' ; ', dot2.y:2, ')');
-        writeln(log, '3: (', dot3.x:2, ' ; ', dot3.y:2, ')');
-        writeln(log, '4: (', dot4.x:2, ' ; ', dot4.y:2, ')');
-        writeln(log, '5: (', dot5.x:2, ' ; ', dot5.y:2, ')');
-        writeln(log, '6: (', dot6.x:2, ' ; ', dot6.y:2, ')');
+        writeln(log, l:3, ' / ', fr:3); {log file}
+        writeln(log, '1: (', dot1.x:3, ' ; ', dot1.y:3, ')');
+        writeln(log, '2: (', dot2.x:3, ' ; ', dot2.y:3, ')');
+        writeln(log, '3: (', dot3.x:3, ' ; ', dot3.y:3, ')');
+        writeln(log,'');
+        writeln(log, '4: (', dot4.x:3, ' ; ', dot4.y:3, ')');
+        writeln(log, '5: (', dot5.x:3, ' ; ', dot5.y:3, ')');
+        writeln(log, '6: (', dot6.x:3, ' ; ', dot6.y:3, ')');
         writeln(log,'');
     end;
 {----Main----}
