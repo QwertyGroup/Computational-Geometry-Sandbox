@@ -172,15 +172,16 @@ procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);    {Заливка 
                     b:=(x2 - j) * (y3 - y2) - (x3 - x2) * (y2 - i);
                     c:=(x3 - j) * (y1 - y3) - (x1 - x3) * (y3 - i);
 
-                    if ((a>=0) and (b>=0) and (c>=0)) or ((a<=0) and (b<=0) and (c<=0)) then
-                        begin
-                            if id = 1 then 
-                                Table[i,j]:= id;
-                            if (id = 2) and (Table[i,j] = 0) then
-                                Table[i,j]:= id
-                            else if (id = 2) and (Table[i,j] = 1) then
-                                inc(Table[i,j], id);
-                        end;
+                    if not ( (x1=x2) and (y1=y2) or (x1=x3) and (y1=y3) or (x2=x3) and (y2=y3) ) then
+                        if ((a>=0) and (b>=0) and (c>=0)) or ((a<=0) and (b<=0) and (c<=0)) then
+                            begin
+                                if id = 1 then 
+                                    Table[i,j]:= id;
+                                if (id = 2) and (Table[i,j] = 0) then
+                                    Table[i,j]:= id
+                                else if (id = 2) and (Table[i,j] = 1) then
+                                    inc(Table[i,j], id);
+                            end;
                 end;
     end;
 {----FirstTriangle----}
@@ -192,7 +193,7 @@ procedure pFirstTriangle;
         pLine(dot1.x, dot1.y, dot2.x, dot2.y, 1);   {1 сторона        }
         pLine(dot1.x, dot1.y, dot3.x, dot3.y, 1);   {2 сторона        }
         pLine(dot2.x, dot2.y, dot3.x, dot3.y, 1);   {3 сторона        }
-        //pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);   {Заливка 1 треульника}
+        pFillTriangle(dot1.x, dot1.y, dot2.x, dot2.y, dot3.x, dot3.y, 1);   {Заливка 1 треульника}
     end;
 {----SecondTriangle----}
 procedure pSecondTriangle;
@@ -203,7 +204,7 @@ procedure pSecondTriangle;
         pLine(dot4.x, dot4.y, dot5.x, dot5.y, 2);   {1 сторона        }
         pLine(dot4.x, dot4.y, dot6.x, dot6.y, 2);   {2 сторона        }
         pLine(dot5.x, dot5.y, dot6.x, dot6.y, 2);   {3 сторона        }
-        //pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);   {Заливка 2 треульника}
+        pFillTriangle(dot4.x, dot4.y, dot5.x, dot5.y, dot6.x, dot6.y, 2);   {Заливка 2 треульника}
     end;
 {----TableWriteDeBug----}
 procedure pTWrdBug;
@@ -217,7 +218,7 @@ procedure pTWrdBug;
     end;
 {----frames----}
 const   fr = 360;            {Кол-во кадров             }
-        del = 300;           {Время ожиданя             }
+        del = 150;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
         log:text;            {log - deBug log           } 
 {----deBug----}
@@ -241,6 +242,16 @@ begin
     randomize;               {Подрубаем рандом          }
     pDotAssignment(dot1,1);  {Задание параметров 1 точки}
     pDotAssignment(dot2,2);  {Задание параметров 2 точки}
+    {}
+    //dot1.velotsityX:=0;
+    //dot1.velotsityY:=0;
+    //dot1.x:=12;
+    //dot1.y:=10;
+    //dot2.velotsityX:=0;
+    //dot2.velotsityY:=0;
+    //dot2.x:=12;
+    //dot2.y:=10;
+    {}
     pDotAssignment(dot3,3);  {Задание параметров 3 точки}
     pDotAssignment(dot4,4);  {Задание параметров 4 точки}
     pDotAssignment(dot5,5);  {Задание параметров 5 точки}
