@@ -250,7 +250,7 @@ begin
     //dot2.velotsityX:=0;
     //dot2.velotsityY:=0;
     //dot2.x:=12;
-    //dot2.y:=10;
+    //dot2.y:=9;
     {}
     pDotAssignment(dot3,3);  {Задание параметров 3 точки}
     pDotAssignment(dot4,4);  {Задание параметров 4 точки}
