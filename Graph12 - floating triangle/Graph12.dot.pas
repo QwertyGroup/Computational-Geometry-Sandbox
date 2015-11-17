@@ -17,8 +17,8 @@ const   m = 79; {x} {Размеры поля}
 
 type    Tt = array[1..n,1..m] of integer; 
         Tdot = record
-                    velotsityX:integer; {Скорость точки по оси X                                       }
-                    velotsityY:integer; {Скорость точки по оси Y                                       }
+                    velocityX:integer; {Скорость точки по оси X                                       }
+                    velocityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
                     x, y:integer;       {Начальние координаты точки                                    }
                     id:byte;            {Номер точки                                                   }
@@ -57,25 +57,25 @@ procedure pDotAssignment(var dot:Tdot; id:byte);
     begin
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
-        dot.velotsityX:= 5 - random(11);
-        dot.velotsityY:= 5 - random(11);
+        dot.velocityX:= 5 - random(11);
+        dot.velocityY:= 5 - random(11);
         dot.id:=id;
     end;
 {----PositionCalculation----} {Просчет позиции точки}
 procedure pPosCalc(var dot:Tdot);
     begin
-        dot.x:= dot.x + dot.velotsityX;
-        dot.y:= dot.y + dot.velotsityY;
+        dot.x:= dot.x + dot.velocityX;
+        dot.y:= dot.y + dot.velocityY;
 
         if (dot.x >= m) or (dot.x <= 1) then
-            dot.velotsityX:= -dot.velotsityX;
+            dot.velocityX:= -dot.velocityX;
         if (dot.y >= n) or (dot.y <= 1) then
-            dot.velotsityY:= -dot.velotsityY;
+            dot.velocityY:= -dot.velocityY;
 
         if (dot.x > m) or (dot.x < 1) then
-            dot.x:= dot.x + dot.velotsityX;
+            dot.x:= dot.x + dot.velocityX;
         if (dot.y > n) or (dot.y < 1) then
-            dot.y:= dot.y + dot.velotsityY;
+            dot.y:= dot.y + dot.velocityY;
     end;
 {----DotMotion----} {Движение точки}
 procedure pDotMotion(var dot:Tdot);
@@ -97,8 +97,8 @@ begin
     //pField;
     //dot2.x:=20;
     //dot2.y:=20;
-    //dot2.velotsityX:=1;
-    //dot2.velotsityY:=1;
+    //dot2.velocityX:=1;
+    //dot2.velocityY:=1;
     {EndOfdeBugBlock  }
 
     for l:=1 to fr do
@@ -115,8 +115,8 @@ begin
     {BeginOfdeBugBlock}
     //writeln(dot1.x);
     //writeln(dot1.y);
-    //writeln(dot1.velotsityX);
-    //writeln(dot1.velotsityY);
+    //writeln(dot1.velocityX);
+    //writeln(dot1.velocityY);
     {EndOfdeBugBlock  }
 
     readln;

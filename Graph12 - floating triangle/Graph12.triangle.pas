@@ -17,8 +17,8 @@ const   m = 79; {x} {Размеры поля}
 
 type    Tt = array[1..n,1..m] of integer;
         Tdot = record
-                    velotsityX:integer; {Скорость точки по оси X                                       }
-                    velotsityY:integer; {Скорость точки по оси Y                                       }
+                    velocityX:integer; {Скорость точки по оси X                                       }
+                    velocityY:integer; {Скорость точки по оси Y                                       }
                                         {Vy/Vx - tg угла между горизонтом и направлением движения точки}
                     x, y:integer;       {Начальние координаты точки                                    }
                     id:integer;         {Номер точки                                                   }
@@ -141,25 +141,25 @@ procedure pDotAssignment(var dot:Tdot; id:integer);
     begin
         dot.x:= random(79)+1;
         dot.y:= random(24)+1;
-        dot.velotsityX:= 5 - random(11);
-        dot.velotsityY:= 5 - random(11);
+        dot.velocityX:= 5 - random(11);
+        dot.velocityY:= 5 - random(11);
         dot.id:=id;
     end;
 {----PositionCalculation----} {Просчет позиции точки}
 procedure pPosCalc(var dot:Tdot);
     begin
-        dot.x:= dot.x + dot.velotsityX;
-        dot.y:= dot.y + dot.velotsityY;
+        dot.x:= dot.x + dot.velocityX;
+        dot.y:= dot.y + dot.velocityY;
 
         if (dot.x >= m) or (dot.x <= 1) then
-            dot.velotsityX:= -dot.velotsityX;
+            dot.velocityX:= -dot.velocityX;
         if (dot.y >= n) or (dot.y <= 1) then
-            dot.velotsityY:= -dot.velotsityY;
+            dot.velocityY:= -dot.velocityY;
 
         if (dot.x > m) or (dot.x < 1) then
-            dot.x:= dot.x + dot.velotsityX;
+            dot.x:= dot.x + dot.velocityX;
         if (dot.y > n) or (dot.y < 1) then
-            dot.y:= dot.y + dot.velotsityY;
+            dot.y:= dot.y + dot.velocityY;
     end;
 {----FillTriangle----}
 procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);    {Заливка треульника}
@@ -243,12 +243,12 @@ begin
     pDotAssignment(dot1,1);  {Задание параметров 1 точки}
     pDotAssignment(dot2,2);  {Задание параметров 2 точки}
     {}
-    //dot1.velotsityX:=0;
-    //dot1.velotsityY:=0;
+    //dot1.velocityX:=0;
+    //dot1.velocityY:=0;
     //dot1.x:=12;
     //dot1.y:=10;
-    //dot2.velotsityX:=0;
-    //dot2.velotsityY:=0;
+    //dot2.velocityX:=0;
+    //dot2.velocityY:=0;
     //dot2.x:=12;
     //dot2.y:=9;
     {}
