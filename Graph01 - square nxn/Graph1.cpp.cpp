@@ -18,6 +18,9 @@ int main()
 		}
 		cout << endl;
 	}
+	
+	cout << "kek";
+	
 	int p;
-	cin >> p;
+	system("pause");
 }
