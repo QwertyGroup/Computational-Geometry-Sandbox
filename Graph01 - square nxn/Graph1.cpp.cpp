@@ -10,24 +10,17 @@ int x, y, i, j;
 
 void pField();
 
-int main()
-{
-	for (int i = 0; i < n; i++)
-	{
-		for (int j = 0; j < m; j++)
-		{
-			cout << '.';
-		}
-		cout << endl;
-	}
-	
-	cout << "kek";
-	
-	int p;
+int main() {
+	pField;
 	system("pause");
 }
 
 void pField()
 {
-	
+	for (int i = 0; i < n; i++) {
+		for (int j = 0; j < m; j++) {
+			cout << '.';
+		}
+		cout << endl;
+	}
 }
