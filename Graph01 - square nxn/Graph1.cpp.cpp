@@ -8,6 +8,8 @@ const int m = 20;
 const int n = 20;
 int x, y, i, j;
 
+void pField();
+
 int main()
 {
 	for (int i = 0; i < n; i++)
@@ -23,4 +25,9 @@ int main()
 	
 	int p;
 	system("pause");
+}
+
+void pField()
+{
+	
 }
