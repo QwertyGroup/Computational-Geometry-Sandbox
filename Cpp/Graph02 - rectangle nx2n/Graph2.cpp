@@ -5,7 +5,7 @@
 using namespace std;
 
 const int n = 20;
-int x, y, i, j;
+int i, j;
 char Table [n][2*n];
 
 void pField();
