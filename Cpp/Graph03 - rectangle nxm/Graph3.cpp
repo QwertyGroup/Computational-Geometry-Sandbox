@@ -15,8 +15,9 @@ void pTWr();
 int main() 
 {
 	pField();
-	pDiagonal();
-	pTWr();
+	//pDiagonal();
+	//pTWr();
+	//cout << int(2.5) << endl;
 	system("pause");
 	return(0);
 }
@@ -31,13 +32,19 @@ void pField()
 void pDiagonal()
 {
 	double x, y;
-	double k = n / m;
+	//double k;
+	//k = n / m;
 	
 	for ( i = 0; i < n; i++)
 	{
 		y = i;
-		x = y / k;
-		Table[int (y)][int (x)] = char(248);
+		x = y / (n / m);
+		//Table[int (y)][int (x)] = char(248);
+		//cout << int(y) << ' ' <<int(x) << endl;
+		cout << y << ' ' << x << endl;
+		//cout << k << endl;
+		cout << n << ' ' << m << endl;
+		cout << n/m << endl;
 	}
 	
 //	for ( j = 0; i < m; j++)
