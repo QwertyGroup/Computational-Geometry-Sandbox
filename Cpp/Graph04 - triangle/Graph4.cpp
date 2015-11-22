@@ -56,4 +56,4 @@ void pTWr()
 		}
 		cout << endl;
 	}
-}
+}2
