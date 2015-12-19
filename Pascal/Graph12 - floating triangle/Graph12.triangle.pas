@@ -13,7 +13,7 @@
 uses    crt;
 
 const   m = 79; {x} {Размеры поля}
-        n = 24; {y} 
+        n = 24; {y}
 
 type    Tt = array[1..n,1..m] of integer;
         Tdot = record
@@ -107,13 +107,13 @@ procedure pLine(x1, y1, x2, y2, id:integer);
         b:= y1 - k*x1;          {Коэффициент смещения   }
 
         if y2 > y1 then         {Если линия диагональная}
-            for i:=y1 to y2 do 
+            for i:=y1 to y2 do
                 begin
                     y:= i;
                     x:= (y-b) / k;
                     pEquOrInc(round(y), round(x), id);
                 end
-        else if y2 < y1 then 
+        else if y2 < y1 then
             for i:=y2 to y1 do
                 begin
                     y:= i;
@@ -122,14 +122,14 @@ procedure pLine(x1, y1, x2, y2, id:integer);
                 end;
 
         if x2 > x1 then
-            for j:=x1 to x2 do 
+            for j:=x1 to x2 do
                 begin
                     x:= j;
                     y:= k*x + b;
                     pEquOrInc(round(y),round(x), id);
                 end
         else if x2 < x1 then
-            for j:= x2 to x1 do 
+            for j:= x2 to x1 do
                 begin
                     x:= j;
                     y:= k*x + b;
@@ -165,7 +165,7 @@ procedure pPosCalc(var dot:Tdot);
 procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);    {Заливка треульника}
     var a, b, c:integer;
     begin
-        for i:=1 to n do 
+        for i:=1 to n do
             for j:=1 to m do
                 begin
                     a:=(x1 - j) * (y2 - y1) - (x2 - x1) * (y1 - i);
@@ -175,7 +175,7 @@ procedure pFillTriangle(x1, y1, x2, y2, x3, y3, id:integer);    {Заливка 
                     if not ( (x1=x2) and (y1=y2) or (x1=x3) and (y1=y3) or (x2=x3) and (y2=y3) ) then
                         if ((a>=0) and (b>=0) and (c>=0)) or ((a<=0) and (b<=0) and (c<=0)) then
                             begin
-                                if id = 1 then 
+                                if id = 1 then
                                     Table[i,j]:= id;
                                 if (id = 2) and (Table[i,j] = 0) then
                                     Table[i,j]:= id
@@ -220,7 +220,7 @@ procedure pTWrdBug;
 const   fr = 360;            {Кол-во кадров             }
         del = 300;           {Время ожиданя             }
 var     l:integer;           {Счетчик кадров            }
-        log:text;            {log - deBug log           } 
+        log:text;            {log - deBug log           }
 {----deBug----}
 procedure pDeBug;
     begin
@@ -238,7 +238,7 @@ procedure pDeBug;
     end;
 {----Main----}
 begin
-    readln; 
+    readln;
     randomize;               {Подрубаем рандом          }
     pDotAssignment(dot1,1);  {Задание параметров 1 точки}
     pDotAssignment(dot2,2);  {Задание параметров 2 точки}

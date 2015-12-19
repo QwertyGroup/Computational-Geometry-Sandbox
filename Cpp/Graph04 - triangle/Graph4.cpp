@@ -22,34 +22,26 @@ int main()
 
 void pField()
 {
-	for ( i = 0; i < n; i++) 
-		for ( j = 0; j < m; j++) 
-			Table[i][j] = char(249);	
+	for ( i = 0; i < n; i++)
+		for ( j = 0; j < m; j++)
+			Table[i][j] = char(249);
 }
 
 void pLine(int x1, int y1, int x2, int y2, int id)
 {
-	double x, y;
-	double k = double(n) / double(m);
-	
-	for ( i = 0; i < n; i++)
-	{
-		y = i;
-		x = y / k;
-		Table[int (y)][int (x)] = char(248);
-	}
-	
-	for ( j = 0; j < m; j++)
-	{
-		x = j;
-		y = k * x;
-		Table[int(y)][int(x)] = char(248);
-	}
+	double x,y;
+	double k;
+	double b;
+
+	k= (y1-y2) / (x1-x2);
+	b= y1 - k*x1;
+
+	if (y2 > y1)
 }
 
 void pTWr()
 {
-	for ( i = 0; i < n; i++) 
+	for ( i = 0; i < n; i++)
 	{
 		for ( j = 0; j < m; j++) {
 			cout << Table[i][j];
